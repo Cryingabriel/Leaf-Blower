@@ -1,11 +1,12 @@
 import pygame
-import leaves
+from leaves import green_leaves
 from player import Player
 import roomba
 import blower
 import apple
 from pygame.math import Vector2
 from pygame.rect import Rect
+import random
 
 
 # config:
@@ -21,6 +22,10 @@ pygame.display.set_caption("Leaf blower")
 
 
 # definitions:
+
+leaves = []
+for i in range(1):
+    leaves.append(green_leaves(random.randrange(10, 1100), random.randrange(10, 700)))
 
 Mousepos = (0,0)
 playerPos = Vector2(Mousepos[0], Mousepos[1])
