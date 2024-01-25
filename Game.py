@@ -1,6 +1,9 @@
 import pygame
-from leaves import green_leaves
+from leaves import gleaves
+from leaves import Goldleaves
 from player import Player
+from leaves import screen
+from leaves import SCREEN_SIZE
 import roomba
 import blower
 import apple
@@ -11,29 +14,28 @@ import random
 
 # config:
 FRAMERATE = 60
-SCREEN_SIZE = Vector2(1200, 800)
 
 
 # pygame init:
 pygame.init()
-screen = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("Leaf blower")
 
 
 
 # definitions:
 
-leaves = []
-for i in range(1):
-    leaves.append(green_leaves(random.randrange(10, 1100), random.randrange(10, 700)))
-
-Mousepos = (0,0)
-playerPos = Vector2(Mousepos[0], Mousepos[1])
-player = Player(playerPos.x, playerPos.y)
 
 def main():
     # game setup:
     clock = pygame.time.Clock()
+
+
+    leaves = []
+    for i in range(30):
+        leaves.append(gleaves(random.randrange(10, 1100), random.randrange(10, 700)))
+        leaves.append(Goldleaves(random.randrange(10, 1100), random.randrange(10, 700)))
+
+    player = Player(Vector2(0, 0))
 
     # main loop:
     running = True
@@ -41,14 +43,21 @@ def main():
         delta = clock.tick(FRAMERATE) / 1000
 
         # input:
+        mouse_pos = Vector2(pygame.mouse.get_pos())
+        player.update(mouse_pos)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
         # draw:
         screen.fill("#000000")
+        
+        player.draw()
+        for i in range (len(leaves)):
+            leaves[i].draw()
 
         pygame.display.flip()
+
 
 if __name__ == "__main__":
     main()
