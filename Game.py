@@ -49,6 +49,10 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
+        for j in range(len(leaves)):
+            if leaves[j].pos:
+                pass
+
         # draw:
         screen.fill("#000000")
         

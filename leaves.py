@@ -11,7 +11,6 @@ class gleaves:
         self.yVel: int = 0
         self.pos = pygame.Rect( xpos, ypos, 20, 20)
 
-
     def hitbox(self, screen):
         if self.isAlive == True:
             pygame.draw.rect(screen, (10, 255, 20), (self.pos))
@@ -25,12 +24,12 @@ class gleaves:
 
     def collide(self):
         pass
-        
     
     def dead(self):
         self.isAlive = False
         self.xVel = 0
         self.yVel = 0
+
 
 class Goldleaves(gleaves):
     def __init__(self, xpos, ypos):
