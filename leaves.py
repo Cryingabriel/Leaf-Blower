@@ -23,7 +23,10 @@ class gleaves:
         self.pos.y += self.yVel
 
     def collide(self):
-        pass
+        if self.pos.x > 1200 or self.pos.x < 0:
+            self.dead()
+        if self.pos.y > 800 or self.pos.y < 0:
+            self.dead()
     
     def dead(self):
         self.isAlive = False
