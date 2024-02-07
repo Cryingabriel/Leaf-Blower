@@ -22,13 +22,16 @@ class gleaves:
     def draw(self):
         if self.isAlive == True:
             pygame.draw.circle(screen, (10, 255, 20), (self.pos.x, self.pos.y), 10)
-    def update(self):
+    def update(self, leavesb):
         self.pos.x += self.xVel
         self.pos.y += self.yVel
         if self.pos.x > 1200 or self.pos.x < 0:
             self.dead()
+            leavesb+= 1
         if self.pos.y > 800 or self.pos.y < 0:
             self.dead()
+            leavesb+= 1
+        return leavesb
     
 
     def applyphysics(self, Player: Vector2):

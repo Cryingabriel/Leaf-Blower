@@ -56,7 +56,7 @@ def main():
                 running = False
 
         for j in range(len(leaves)):
-            leaves[j].update()
+            leaves[j].update(leavesbag)
             leaves[j].applyphysics(mouse_pos)
 
         # draw:
