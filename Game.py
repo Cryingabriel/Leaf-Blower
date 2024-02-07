@@ -10,6 +10,8 @@ import apple
 from pygame.math import Vector2
 from pygame.rect import Rect
 import random
+from leaves import RainbowLeaves
+from random import randrange as rr
 
 
 # config:
@@ -19,7 +21,10 @@ FRAMERATE = 60
 # pygame init:
 pygame.init()
 pygame.display.set_caption("Leaf blower")
+my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
+
+leavesbag = 0
 
 
 # definitions:
@@ -34,6 +39,7 @@ def main():
     for i in range(30):
         leaves.append(gleaves(random.randrange(10, 1100), random.randrange(10, 700)))
         leaves.append(Goldleaves(random.randrange(10, 1100), random.randrange(10, 700)))
+        leaves.append(RainbowLeaves(random.randrange(10, 1100), random.randrange(10, 700)))
 
     player = Player(Vector2(0, 0))
 
@@ -50,8 +56,8 @@ def main():
                 running = False
 
         for j in range(len(leaves)):
-            if leaves[j].pos:
-                pass
+            leaves[j].update()
+            leaves[j].applyphysics(mouse_pos)
 
         # draw:
         screen.fill("#000000")
@@ -59,6 +65,10 @@ def main():
         player.draw()
         for i in range (len(leaves)):
             leaves[i].draw()
+
+        text_surface1 = my_font.render(str(leavesbag), 1 ,(rr(0,255), rr(0,255), rr(0,255)))
+
+        screen.blit(text_surface1, (0,0))
 
         pygame.display.flip()
 
