@@ -13,10 +13,8 @@ import random
 from leaves import RainbowLeaves
 from random import randrange as rr
 
-
 # config:
 FRAMERATE = 60
-
 
 # pygame init:
 pygame.init()

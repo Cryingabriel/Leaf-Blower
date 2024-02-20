@@ -4,6 +4,7 @@ from pygame.math import Vector2
 import math
 from random import randrange as rr
 
+
 SCREEN_SIZE = Vector2(1200, 800)
 screen = pygame.display.set_mode(SCREEN_SIZE)
 
@@ -27,10 +28,10 @@ class gleaves:
         self.pos.y += self.yVel
         if self.pos.x > 1200 or self.pos.x < 0:
             self.dead()
-            leavesb+= 1
+            leavesb += 1
         if self.pos.y > 800 or self.pos.y < 0:
             self.dead()
-            leavesb+= 1
+            leavesb += 1
         return leavesb
     
 
@@ -56,7 +57,6 @@ class gleaves:
         self.xVel: int = 0
         self.yVel: int = 0
 
-
 class Goldleaves(gleaves):
     def __init__(self, xpos, ypos):
         super().__init__(xpos, ypos)
@@ -71,3 +71,5 @@ class RainbowLeaves(gleaves):
     def draw(self):
         if self.isAlive == True:
             pygame.draw.circle(screen, (rr(0,255), rr(0,255), rr(0,255)), (self.pos.x, self.pos.y), 10)
+
+        
